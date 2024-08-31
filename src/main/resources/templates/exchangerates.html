@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyhledávač směnného kurzu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container text-center mt-5">
+    <h1 class="display-4">Vítejte ve vyhledávači směnného kurzu</h1>
+    <form th:action="@{/exchangerates}" th:object="${currency}" method="POST">
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{country}"
+                   placeholder="Zadejte název země pro kterou chcete zjistit směnný kurz."
+                   th:errorClass="is-invalid"
+            />
+            <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="text-danger"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Odeslat</button>
+    </form>
+    <table class="table mt-4">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Stát</th>
+            <th scope="col">Množství</th>
+            <th scope="col">Kód měny</th>
+            <th scope="col">Kurz</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${currency.country}"></td>
+            <td th:text="${currency.amount}"></td>
+            <td th:text="${currency.code}"></td>
+            <td th:text="${currency.exchangeRate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

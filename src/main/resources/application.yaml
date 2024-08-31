@@ -1,0 +1,14 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: ExchangeRatesWebApp
+  profiles:
+    active: dev
+  server:
+    port: 8080
+  servlet:
+    context-path: /exchangerates
+
+# define chrome driver and binaries
+

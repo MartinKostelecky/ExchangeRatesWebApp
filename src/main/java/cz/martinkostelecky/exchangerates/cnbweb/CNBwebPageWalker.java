@@ -22,7 +22,7 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class CNBwebPagesWalker implements DisposableBean {
+public class CNBwebPageWalker implements DisposableBean {
 
     private static final By lastElement = By.xpath("//*[normalize-space(text())=\"Prohlášení o přístupnosti\"]");
 
@@ -36,7 +36,7 @@ public class CNBwebPagesWalker implements DisposableBean {
      * Binaries path example: c:\\Users\\user\\Downloads\\chrome_driver\\chrome.exe
      */
 
-    public CNBwebPagesWalker(@Value("${chrome.driver:#{null}}") String chromeDriverExe, @Value("${chrome.binaries:#{null}}") String chromeBinaries) throws IOException {
+    public CNBwebPageWalker(@Value("${chrome.driver:#{null}}") String chromeDriverExe, @Value("${chrome.binaries:#{null}}") String chromeBinaries) throws IOException {
         if (chromeDriverExe == null || chromeBinaries == null) {
             log.error("Chrome driver and binaries must be defined in configuration file.");
             throw new IllegalStateException("Chrome driver and binaries must be defined in configuration file.");
